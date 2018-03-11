@@ -197,70 +197,61 @@
 
 <script type="text/javascript">
 
-  $('#submit').on('click',. function(event) {
+  $('#submit').on('click', function(event) {
     event.preventDefault()
+
+    var currentURL = window.location.origin
 
     // getting the answers in an array format
     var scoresArray = [$('#q1').val(), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val(), $('#q10').val()]
 
-    console.log(scoresArray);
-
     // getting the data
-    var newFriend = [
-      name: $('#name').val().trim(),
-      photo: $('#photo').val().trim(),
+    var newFriend = {
+      name: $('#name').val(),
+      photo: $('#photo').val(),
       scores: scoresArray
-    ]
+    }
 
     console.log(newFriend);
 
     // Now send the data to our survey API.
-    $.post('/api/survey', newFriend, function(data) {
-
+    $.post(currentURL + '/api/friends', newFriend, function(data) {
       //
+      // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+	    		$("#matchName").text(data.name);
+	    		$('#matchImg').attr("src", data.photo);
+		    	// Show the modal with the best match
+		    	$("#resultsModal").modal('toggle');
 
-      // clear the survey after submitting
-      $('#name').val('')
-      $('#photo').val('')
-      $('#q1').val('')
-      $('#q2').val('')
-      $('#q3').val('')
-      $('#q4').val('')
-      $('#q5').val('')
-      $('#q6').val('')
-      $('#q7').val('')
-      $('#q8').val('')
-      $('#q9').val('')
-      $('#q10').val('')
 
     }) // end of .post of newFriend data
 
     // Now we get the friend data and compare to user data.
-    function runCompatability() {
-
-      var currentURL = window.location.origin
-
-      // Use AJAX function to GET the API data from our entries
-      $.ajax({
-        url: currentURL + '/api/survey',
-        method: 'GET'
-      }).then(function(friendData){
-
-        // see the api url for troubleshooting
-        console.log('**************************')
-        console.log('URL: ' + currentURL + '/api/survey')
-        console.log('**************************')
-
-        // log our friend object to the console
-        console.log(friendData)
-        console.log('**************************')
-
-
-      }) // end of AJAX function
-
-    } // end of runCompatability function
-
-    runCompatability()
+    // function runCompatability() {
+    //
+    //   var currentURL = window.location.origin
+    //
+    //   // Use AJAX function to GET the API data from our entries
+    //   $.ajax({
+    //     url: currentURL + '/api/friends',
+    //     method: 'GET'
+    //   }).then(function(data){
+    //
+    //     // see the api url for troubleshooting
+    //     console.log('***************************************')
+    //     console.log('URL: ' + currentURL + '/api/friends')
+    //     console.log('***************************************')
+    //
+    //     // log our friend object to the console
+    //     console.log(data)
+    //     console.log('***************************************')
+    //
+    //
+    //   }) // end of AJAX function
+    //
+    // } // end of runCompatability function
+    //
+    // runCompatability()
 
   }) // end of on click event for #submit button function
 

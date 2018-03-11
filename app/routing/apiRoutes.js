@@ -1,7 +1,8 @@
 //* DATA *//
 // Link our routes to survey data, held in an array of answers.
 
-var friendsData = require('../data/friendsData')
+var friends = require('../data/friends')
+var path = require('path')
 
 //* ROUTING *//
 
@@ -9,19 +10,20 @@ module.exports = function(app) {
 
   // API GET Request
 
-  app.get('/api/survey', function(req, res) {
-    res.json(friendsData)
+  app.get('/api/friends', function(req, res) {
+    res.json(friends)
   })
 
   // API POST Request
 
-  app.post('/api/survey', function(req, res) {
+  app.post('/api/friends', function(req, res) {
 
     // push the survey into frendsData array
-    friendsData.push(req.body)
+    friends.push(req.body)
+    res.json(true)
 
-    console.log(friendsData)
-    
+    console.log(friends)
+
   })
 
 }
