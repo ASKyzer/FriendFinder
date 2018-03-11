@@ -179,7 +179,7 @@
          </div>
          <div class="modal-body">
            <h2 id="match-name"></h2>
-           <img id="match-img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
+           <img id="match-img" src="https://www.instagram.com/p/BZB1Xh7HczM/?taken-by=adriansander" alt="">
          </div>
          <div class="modal-footer">
            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -236,10 +236,34 @@
     }) // end of .post of newFriend data
 
     // Now we get the friend data and compare to user data.
+    function runCompatability() {
 
-    
+      var currentURL = window.location.origin
 
+      // Use AJAX function to GET the API data from our entries
+      $.ajax({
+        url: currentURL + '/api/survey',
+        method: 'GET'
+      }).then(function(friendData){
+
+        // see the api url for troubleshooting
+        console.log('**************************')
+        console.log('URL: ' + currentURL + '/api/survey')
+        console.log('**************************')
+
+        // log our friend object to the console
+        console.log(friendData)
+        console.log('**************************')
+
+
+      }) // end of AJAX function
+
+    } // end of runCompatability function
+
+    runCompatability()
 
   }) // end of on click event for #submit button function
+
+
 
 </script>
