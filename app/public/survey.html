@@ -192,3 +192,54 @@
 </body>
 
 </html>
+
+<!-- Below, we grab the values of the survey takers entry for name and image url and answers and post them of our friends API  -->
+
+<script type="text/javascript">
+
+  $('#submit').on('click',. function(event) {
+    event.preventDefault()
+
+    // getting the answers in an array format
+    var scoresArray = [$('#q1').val(), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val(), $('#q10').val()]
+
+    console.log(scoresArray);
+
+    // getting the data
+    var newFriend = [
+      name: $('#name').val().trim(),
+      photo: $('#photo').val().trim(),
+      scores: scoresArray
+    ]
+
+    console.log(newFriend);
+
+    // Now send the data to our survey API.
+    $.post('/api/survey', newFriend, function(data) {
+
+      //
+
+      // clear the survey after submitting
+      $('#name').val('')
+      $('#photo').val('')
+      $('#q1').val('')
+      $('#q2').val('')
+      $('#q3').val('')
+      $('#q4').val('')
+      $('#q5').val('')
+      $('#q6').val('')
+      $('#q7').val('')
+      $('#q8').val('')
+      $('#q9').val('')
+      $('#q10').val('')
+
+    }) // end of .post of newFriend data
+
+    // Now we get the friend data and compare to user data.
+
+    
+
+
+  }) // end of on click event for #submit button function
+
+</script>
