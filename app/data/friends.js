@@ -22,7 +22,7 @@ var friends = [
   },
   {
     name: "Rob",
-    photo: "https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_1280.jpg",
+    photo: "https://cdn.pixabay.com/photo/2017/11/12/16/57/sports-2943144_1280.jpg",
     scores: [
     "2",
     "2",
