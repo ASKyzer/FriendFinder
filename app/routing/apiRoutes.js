@@ -25,36 +25,37 @@ module.exports = function(app) {
     var userPhoto = userData.photo
     var userScores = userData.scores
 
-    var friendsName;
-    var friendsPhoto;
-    var friendsScores;
+    var difference;
+    var totalDifference = 1000000 // total difference is a high number to start comparisobn
 
-    var totalDifference = 0
-
-    var scoreDifferences = []
+    var perfectMatch;
 
 
     for (var i = 0; i < friends.length; i++) {
-
-      var totalDifference = 0
-
-      friendsName = friends[i].name
-      friendsPhoto = friends[i].photo
-      friendsScores = friends[i].scores
+      var difference = 0
 
       for (var j = 0; j < 10; j++) {
-
-        totalDifference += Math.abs(parseInt(friendsScores[j]) - parseInt(userScores[j]))
-
-        scoreDifferences.push(totalDifference)
+        // get the difference between the userscore and friends scosres in positive numbers with Math.abs
+        difference += Math.abs(parseInt(friends[i].scores[j]) - parseInt(userScores[j]))
+        // console.log(difference);
       } // end of for loop j
+      // console.log(difference);
+      // console.log(totalDifference);
+
+      if (difference < totalDifference) {
+        totalDifference = difference
+        perfectMatch = i
+      }
+      // console.log(perfectMatch);
 
     } // end of for loop i
-    console.log(totalDifference);
-    console.log(scoreDifferences);
 
+    var yourPerfectMatch = friends[perfectMatch]
+    // console.log(yourPerfectMatch);
+
+    res.json(yourPerfectMatch)
     // push the survey into frendsData array
-    friends.push(req.body)
+    friends.push(userData)
 
   }) // end of app.post
 
