@@ -1,4 +1,4 @@
-# Friend FriendFinder
+# Friend Finder
 
 ### Overview
 
