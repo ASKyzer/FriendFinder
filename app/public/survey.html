@@ -25,13 +25,13 @@
         <div class="field">
           <label for="" class="label inputLabel">Your Name (Required)</label>
           <div class="control">
-            <input id="name" class="input is-warning" type="text" placeholder="Your Name (Required)">
+            <input id="name" class="input is-warning form-control" type="text" placeholder="Your Name (Required)">
           </div>
         </div>
         <div class="field">
           <label for="" class="label inputLabel">Link to Photo Image (Required)</label>
           <div class="control">
-            <input id="photo" class="input is-warning" type="text" placeholder="URL to your image (Required)">
+            <input id="photo" class="input is-warning form-control" type="text" placeholder="URL to your image (Required)">
           </div>
         </div>
         <hr>
@@ -177,7 +177,7 @@
             </div>
           </div>
         </div>
-        
+
         <br>
         <!-- Submit Button -->
         <button type="submit" class="button is-warning" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i> Find Your Friend Now</button>
@@ -221,49 +221,75 @@
 
   $('#submit').on('click', function(event) {
     event.preventDefault()
-    var currentURL = window.location.origin
-    // getting the data
-    var currentUser = {
-       name: $("#name").val(),
-       photo: $("#photo").val(),
-       scores: [
-         $("#q1").val(),
-         $("#q2").val(),
-         $("#q3").val(),
-         $("#q4").val(),
-         $("#q5").val(),
-         $("#q6").val(),
-         $("#q7").val(),
-         $("#q8").val(),
-         $("#q9").val(),
-         $("#q10").val()
-       ]
-    }
-    console.log(currentUser);
-    console.log("**************************");
-    // Now send the data to our survey API.
-    $.post(currentURL + '/api/friends', currentUser, function(data) {
-      //
-      console.log(data);
-          // post the result to the modal
-	    		$("#match-name").text(data.name);
-	    		$('#match-img').attr("src", data.photo);
-		    	// Show the modal with the best match
-		    	$("#results-modal").addClass('is-active');
-    }) // end of .post of currentUser's data
-            //clear form after submission
-            $('#name').val("");
-            $('#photo').val("");
-            $('#q1').val("");
-            $('#q2').val("");
-            $('#q3').val("");
-            $('#q4').val("");
-            $('#q5').val("");
-            $('#q6').val("");
-            $('#q7').val("");
-            $('#q8').val("");
-            $('#q9').val("");
-            $('#q10').val("");
+
+    // Form validation
+    function formValidation() {
+
+      var isValid = true
+      $('.form-control').each(function(){
+        if ($(this).val() === '') {
+          isValid = false
+        } // end of this.val()
+      }) // end of each of the .form-control function
+
+      $('.chosen-select').each(function(){
+        if ($(this).val() === '') {
+          isValid = false;
+        } // end of this.val()
+      }) // end of .chosen-select each function
+      return isValid;
+    } // end of formValidation function
+
+    // If all fields are filled, then we run the program
+    if (formValidation()) {
+
+      var currentURL = window.location.origin
+      // getting the data
+      var currentUser = {
+         name: $("#name").val(),
+         photo: $("#photo").val(),
+         scores: [
+           $("#q1").val(),
+           $("#q2").val(),
+           $("#q3").val(),
+           $("#q4").val(),
+           $("#q5").val(),
+           $("#q6").val(),
+           $("#q7").val(),
+           $("#q8").val(),
+           $("#q9").val(),
+           $("#q10").val()
+         ]
+      }
+      console.log(currentUser);
+      // Now send the data to our survey API.
+      $.post(currentURL + '/api/friends', currentUser, function(data) {
+        //
+        console.log(data);
+            // post the result to the modal
+  	    		$("#match-name").text(data.name);
+  	    		$('#match-img').attr("src", data.photo);
+  		    	// Show the modal with the best match
+  		    	$("#results-modal").addClass('is-active');
+      }) // end of .post of currentUser's data
+              //clear form after submission
+              $('#name').val("");
+              $('#photo').val("");
+              $('#q1').val("");
+              $('#q2').val("");
+              $('#q3').val("");
+              $('#q4').val("");
+              $('#q5').val("");
+              $('#q6').val("");
+              $('#q7').val("");
+              $('#q8').val("");
+              $('#q9').val("");
+              $('#q10').val("");
+
+          } // end of if formValidation is true
+          else {
+            alert('Please fill out all fields before submitting.')
+          }
   }) // end of on click event for #submit button function
 
   // add toggle to remove modal when the x or close buttons are pressed.
@@ -273,5 +299,5 @@
     $(".close").click(function() {
      $("#results-modal").removeClass("is-active");
   });
-
+  
 </script>
