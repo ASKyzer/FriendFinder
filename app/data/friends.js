@@ -54,7 +54,7 @@ var friends = [
   },
   {
     name: "Shawn",
-    photo: "https://cdn.pixabay.com/photo/2018/03/09/06/45/nature-3210777_1280.jpg",
+    photo: "https://cdn.pixabay.com/photo/2015/09/18/11/46/man-945482_1280.jpg",
     scores: [
     "4",
     "4",

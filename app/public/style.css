@@ -1,0 +1,27 @@
+.headerTitle {
+  font-size: 55px;
+  text-transform: uppercase;
+}
+
+.questionTitle {
+  font-size: 55px;
+}
+.inputLabel {
+  font-size: 24px;
+  color: #fff;
+}
+
+.optionField h3 {
+  font-size: 24px;
+  margin-top: 10px;
+}
+.optionField label {
+  font-size: 20px;
+}
+
+#submit {
+  width: 100%;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}

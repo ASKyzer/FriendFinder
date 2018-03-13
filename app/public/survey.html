@@ -3,40 +3,39 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Friend Finder</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
 
     <!-- Chosen -->
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
-
-       <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+     <link rel="stylesheet" href="style.css">
 
   </head>
   <body>
 
       <div class="container is-widescreen">
         <div class="notification is-primary">
-        <h1 class="title">
+        <h1 class="title questionTitle">
           <strong>Survey Questions</strong>
         </h1>
         <hr>
         <div class="field">
-          <label for="" class="label">Your Name (Required)</label>
+          <label for="" class="label inputLabel">Your Name (Required)</label>
           <div class="control">
             <input id="name" class="input is-warning" type="text" placeholder="Your Name (Required)">
           </div>
         </div>
         <div class="field">
-          <label for="" class="label">Link to Photo Image (Required)</label>
+          <label for="" class="label inputLabel">Link to Photo Image (Required)</label>
           <div class="control">
             <input id="photo" class="input is-warning" type="text" placeholder="URL to your image (Required)">
           </div>
         </div>
         <hr>
-        <div class="field">
+        <div class="field optionField">
           <h3><strong>Question 1</strong></h3>
           <label for="">Your mind is always buzzing with unexplored ideas and plans.</label>
           <div class="control">
@@ -178,8 +177,7 @@
             </div>
           </div>
         </div>
-
-        <br>
+        
         <br>
         <!-- Submit Button -->
         <button type="submit" class="button is-warning" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i> Find Your Friend Now</button>
