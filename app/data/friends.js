@@ -6,7 +6,7 @@
 var friends = [
   {
     name : "Adrian",
-    photo: "https://cdn.pixabay.com/photo/2018/03/01/02/47/summer-3189602_1280.jpg",
+    photo: "https://cdn.pixabay.com/photo/2015/08/16/12/38/headphones-890881_1280.jpg",
     scores: [
     "1",
     "1",
