@@ -14,7 +14,7 @@ module.exports = function(app) {
 
     res.json(friends)
 
-  }) // nd of app.get
+  }) // end of app.get
 
   // API POST Request
 
@@ -51,6 +51,7 @@ module.exports = function(app) {
     } // end of for loop i
 
     var yourPerfectMatch = friends[perfectMatch]
+    console.log(yourPerfectMatch);
     // console.log(yourPerfectMatch);
 
     res.json(yourPerfectMatch)
